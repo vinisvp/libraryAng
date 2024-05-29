@@ -1,1 +1,45 @@
-<p>author works!</p>
+<div class="countainer p-5">
+  <form [formGroup]="authorFormGroup">
+    <div class="form-floating mb-3">
+      <input type="text"
+             class="form-control"
+             id="name"
+             placeholder="Nome do Autor"
+             formControlName="name">
+      <label for="name">Nome do Autor</label>
+    </div>
+    <div class="input-group mb-3">
+      <input type="text" id="day"
+             min="1" max="31"
+             class="form-control"
+             placeholder="Dia">
+      <select class="form-select"
+              id="mounth"
+              aria-label="">
+        <option *ngFor="let mounth of mounths; index as i" [value]="i">{{mounth}}</option>
+      </select>
+      <input type="text"
+             id="year"
+             class="form-control"
+             placeholder="Ano"
+             aria-label="Ano">
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text"
+             class="form-control"
+             id="nationality"
+             placeholder="Nacionalidade do Autor"
+             formControlName="nationality">
+      <label for="nationality">Nacionalidade do Autor</label>
+    </div>
+    <div class="form-floating mb-3">
+      <textarea class="form-control"
+             id="summary"
+             placeholder="Resumo do Autor"
+             formControlName="summary">
+      </textarea>
+      <label for="summary">Resumo do Autor</label>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="save()" >Primary</button>
+  </form>
+</div>

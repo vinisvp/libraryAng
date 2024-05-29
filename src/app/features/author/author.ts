@@ -1,6 +1,7 @@
 export interface Author{
   id: number,
   name: String,
-  birthDate: number,
+  birthDate: Date,
   nationality: String,
+  summary: String
 }

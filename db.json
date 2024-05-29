@@ -1,6 +1,19 @@
 {
   "authors": [
+    {
+      "id": 1,
+      "name": "AAAAAAAAAAAAA",
+      "birthDate": "2001-06-12T03:00:00.000Z",
+      "nationality": "AAAAAAAAAAAAAA",
+      "summary": "AAAAAAAAAAAAAAAAAAAA"
+    },
+    {
+      "id": 2,
+      "name": "Testeee",
+      "birthDate": "1998-04-22T03:00:00.000Z",
+      "nationality": "AAAAAAAAAAAAAAAA",
+      "summary": "SSSSSSSSSSSSSSSSSSSSSSS"
+    }
   ],
-  "books": [
-  ]
+  "books": []
 }
