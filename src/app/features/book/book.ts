@@ -1,7 +1,8 @@
 export interface Book{
   id: number,
   title: String,
-  description: String,
-  releaseDate: number,
+  genre: String,
+  releaseDate: Date,
+  onSale: boolean,
   authorId: number
 }

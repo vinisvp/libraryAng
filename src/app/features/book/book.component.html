@@ -1,1 +1,104 @@
-<p>book works!</p>
+<div class="countainer bg-dark lg p-5">
+  <form [formGroup]="bookFormGroup" class="mb-3">
+    <h1 class="text-bg-dark">Cadastro de Livro</h1>
+    <div class="form-check form-switch mb-3">
+      <input class="form-check-input" type="checkbox"
+             role="switch"
+             id="onSale" checked
+             formControlName="onSale">
+      <label class="form-check-label text-bg-dark" for="onSale">À venda</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text"
+             class="form-control"
+             id="title"
+             placeholder="Titulo do Livro"
+             formControlName="title">
+      <label for="title">Titulo do Livro</label>
+      <span *ngIf="submmited && title.hasError('required')" class="text-danger">O titulo é requirido!</span>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text"
+             class="form-control"
+             id="genre"
+             placeholder="Genero do Livro"
+             formControlName="genre">
+      <label for="genre">Genero do Livro</label>
+      <span *ngIf="submmited && title.hasError('required')" class="text-danger">O genero é requirida!</span>
+    </div>
+    <label class="text-bg-dark">Data de Lançamento</label>
+    <div class="input-group mb-3">
+      <input type="text" id="day"
+             min="1" max="31"
+             class="form-control"
+             placeholder="Dia">
+      <select class="form-select"
+              id="mounth">
+        <option *ngFor="let mounth of mounths; index as i" [value]="i">{{mounth}}</option>
+      </select>
+      <input type="text" id="year"
+             class="form-control"
+             placeholder="Ano"
+             aria-label="Ano">
+    </div>
+    <span *ngIf="submmited && releaseDate.hasError('required')" class="text-danger">A data de lanç. é requirida!</span>
+    <div class="form-floating mb-3">
+      <select class="form-select"
+              id="author"
+              aria-label="Default select example"
+              formControlName="authorId"
+              [compareWith]="compareAuthors">
+        <option *ngFor="let author of authors" [ngValue]="author.id">{{author.name}}</option>
+      </select>
+      <label for="author" class="form-label">Autor:</label>
+      <span *ngIf="submmited && authorId.hasError('required')" class="text-danger">O/A autor(a) é requirido!</span>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="save()">
+      <span *ngIf="!isEditing">Adicionar</span>
+      <span *ngIf="isEditing">Editar</span>
+    </button>
+  </form>
+  <h1 class="text-bg-dark">Livros Cadastrados</h1>
+  <div class="table-responsive">
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Genero</th>
+          <th scope="col">Data de Lanç.</th>
+          <th scope="col">Á venda</th>
+          <th scope="col">Autor(a)</th>
+          <th class="text-center" scope="col">Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <th scope="row">{{book.id}}</th>
+          <td>{{book.title}}</td>
+          <td>{{book.genre}}</td>
+          <td>{{showDate(book)}}</td>
+          <td>
+            <span *ngIf="book.onSale" class="badge text-bg-success">Sim</span>
+            <span *ngIf="!book.onSale" class="badge text-bg-danger">Não</span>
+          </td>
+          <td>{{getAuthorName(book)?.name}}</td>
+          <td class="text-center">
+            <div class="btn-group" role="group">
+              <button type="button"
+                      class="btn btn-success"
+                      (click)="edit(book)">
+                      <i class="bi bi-pencil-square"></i>
+              </button>
+              <button type="button"
+                      class="btn btn-danger"
+                      (click)="remove(book)">
+                      <i class="bi bi-trash3-fill"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

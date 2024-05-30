@@ -29,5 +29,38 @@
       "summary": "Herbert George Wells, conhecido como H. G. Wells, foi um escritor britânico e membro da Sociedade Fabiana."
     }
   ],
-  "books": []
+  "books": [
+    {
+      "id": 1,
+      "title": "A Revolução dos Bichos",
+      "genre": "Sátira política",
+      "releaseDate": "1945-08-17T03:00:00.000Z",
+      "onSale": true,
+      "authorId": 3
+    },
+    {
+      "id": 2,
+      "title": "A Guerra dos Mundos",
+      "genre": "Ficção Científica",
+      "releaseDate": "1898-01-01T03:06:28.000Z",
+      "onSale": true,
+      "authorId": 4
+    },
+    {
+      "id": 3,
+      "title": "O Iluminado",
+      "genre": "Terror Psicológico",
+      "releaseDate": "1977-01-28T03:00:00.000Z",
+      "onSale": false,
+      "authorId": 1
+    },
+    {
+      "id": 4,
+      "title": "O Senhor dos Anéis",
+      "genre": "Fantasia",
+      "releaseDate": "1954-06-29T03:00:00.000Z",
+      "onSale": true,
+      "authorId": 2
+    }
+  ]
 }

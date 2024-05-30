@@ -8,12 +8,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthorComponent } from './features/author/author.component';
 import { BookComponent } from './features/book/book.component';
+import { NavbarComponent } from './core/navbar/navbar.component';
+import { FooterComponent } from './core/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthorComponent,
-    BookComponent
+    BookComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
