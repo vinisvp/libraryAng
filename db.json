@@ -2,17 +2,31 @@
   "authors": [
     {
       "id": 1,
-      "name": "AAAAAAAAAAAAA",
-      "birthDate": "2001-06-12T03:00:00.000Z",
-      "nationality": "AAAAAAAAAAAAAA",
-      "summary": "AAAAAAAAAAAAAAAAAAAA"
+      "name": "Stephen King",
+      "birthDate": "1947-09-21T03:00:00.000Z",
+      "nationality": "Norte-Americano",
+      "summary": "Stephen Edwin King é um escritor norte-americano de terror, ficção sobrenatural, suspense, ficção científica e fantasia."
     },
     {
       "id": 2,
-      "name": "Testeee",
-      "birthDate": "1998-04-22T03:00:00.000Z",
-      "nationality": "AAAAAAAAAAAAAAAA",
-      "summary": "SSSSSSSSSSSSSSSSSSSSSSS"
+      "name": "J. R. R. Tolkien",
+      "birthDate": "1892-01-03T03:06:28.000Z",
+      "nationality": "Britânico",
+      "summary": "J. R. R. Tolkien foi um escritor, professor universitário e filólogo britânico, nascido na atual África do Sul, que recebeu o título de doutor em Letras e Filologia pela Universidade de Liège e Dublin, em 1954, e autor das obras como O Hobbit, O Senhor dos Anéis e O Silmarillion."
+    },
+    {
+      "id": 3,
+      "name": "George Orwell",
+      "birthDate": "1903-06-25T03:06:28.000Z",
+      "nationality": "Britânico",
+      "summary": "Eric Arthur Blair, mais conhecido pelo pseudónimo George Orwell, foi um escritor, jornalista e ensaísta político inglês, nascido na Índia Britânica."
+    },
+    {
+      "id": 4,
+      "name": "H. G. Wells",
+      "birthDate": "1946-09-21T03:00:00.000Z",
+      "nationality": "Britânico",
+      "summary": "Herbert George Wells, conhecido como H. G. Wells, foi um escritor britânico e membro da Sociedade Fabiana."
     }
   ],
   "books": []

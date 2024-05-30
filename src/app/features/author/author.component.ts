@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Author } from './author';
 import { AuthorService } from '../../services/author.service';
 import { Mounth } from '../../mounth';
@@ -14,15 +14,16 @@ export class AuthorComponent implements OnInit {
   mounths = Object.values(Mounth);
   authorFormGroup: FormGroup;
   isEditing: boolean = false;
+  submmited: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
               private authorService: AuthorService
   ){
     this.authorFormGroup = formBuilder.group({
       id:[''],
-      name:[''],
-      birthDate:[''],
-      nationality:[''],
+      name:['', [Validators.required, Validators.minLength(3)]],
+      birthDate:['', [Validators.required]],
+      nationality:['', [Validators.required]],
       summary:['']
     })
   }
@@ -46,10 +47,16 @@ export class AuthorComponent implements OnInit {
       let date = new Date(year, month, day);
       if(isFinite(+date))
       {
-        this.authorFormGroup.value.birthDate = date;
+        this.authorFormGroup.get('birthDate')?.setValue(date);
       }
-      console.log(this.authorFormGroup.value.birthDate)
     }
+  }
+
+  loadDate(){
+    let date = new Date(this.authorFormGroup.value.birthDate);
+    (document.getElementById('day') as HTMLInputElement).value = String(date.getDate());
+    (document.getElementById('mounth') as HTMLInputElement).value = String(date.getMonth());
+    (document.getElementById('year') as HTMLInputElement).value = String(date.getFullYear());
   }
 
   clearDate(){
@@ -58,27 +65,40 @@ export class AuthorComponent implements OnInit {
     (document.getElementById('year') as HTMLInputElement).value = '';
   }
 
+  showDate(author: Author): String | undefined{
+    let date = new Date(author.birthDate);
+    return date.getDate() + " de "
+          +this.mounths[(date.getMonth())] + " de "
+          +date.getFullYear();
+  }
+
   save(){
     this.saveDate();
-    if (!this.isEditing) {
-      this.authorService.postAuthor(this.authorFormGroup.value).subscribe({
-        next: () => {
-          this.loadAuthors()
-          this.authorFormGroup.reset()
-          this.clearDate()
-          this.isEditing = false
-        }
-      })
-    }
-    else {
-      this.authorService.putAuthor(this.authorFormGroup.value).subscribe({
-        next: () => {
-          this.loadAuthors()
-          this.authorFormGroup.reset()
-          this.clearDate()
-          this.isEditing = false
-        }
-      })
+    this.submmited = true;
+    if (this.authorFormGroup.valid)
+    {
+      if (!this.isEditing) {
+        this.authorService.postAuthor(this.authorFormGroup.value).subscribe({
+          next: () => {
+            this.loadAuthors();
+            this.authorFormGroup.reset();
+            this.clearDate();
+            this.isEditing = false;
+            this.submmited = false;
+          }
+        })
+      }
+      else {
+        this.authorService.putAuthor(this.authorFormGroup.value).subscribe({
+          next: () => {
+            this.loadAuthors();
+            this.authorFormGroup.reset();
+            this.clearDate();
+            this.isEditing = false;
+            this.submmited = false;
+          }
+        })
+      }
     }
   }
 
@@ -90,6 +110,19 @@ export class AuthorComponent implements OnInit {
 
   edit(author: Author){
     this.authorFormGroup.setValue(author);
+    this.loadDate();
     this.isEditing = true;
+  }
+
+  get name(): any{
+    return this.authorFormGroup.get('name');
+  }
+
+  get birthDate(): any{
+    return this.authorFormGroup.get('birthDate');
+  }
+
+  get nationality(): any{
+    return this.authorFormGroup.get('nationality');
   }
 }
