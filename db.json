@@ -61,6 +61,14 @@
       "releaseDate": "1954-06-29T03:00:00.000Z",
       "onSale": true,
       "authorId": 2
+    },
+    {
+      "id": 5,
+      "title": "1984",
+      "genre": "Ficção política",
+      "releaseDate": "1949-06-08T03:00:00.000Z",
+      "onSale": false,
+      "authorId": 3
     }
   ]
 }

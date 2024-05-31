@@ -36,4 +36,17 @@ export class HomeComponent implements OnInit {
   getAuthorName(book: Book): Author | undefined{
     return this.authors.find(a => a.id == book.authorId);
   }
+
+  filterByAuthor(){
+    let authorId: number = parseInt((document.getElementById('authorFilter') as HTMLSelectElement).value)
+    console.log(authorId)
+    if(authorId) {
+      this.authorService.getAuthorBooks(authorId).subscribe({
+        next: data => this.books = data
+      })
+    }
+    else {
+      this.loadBooks();
+    }
+  }
 }

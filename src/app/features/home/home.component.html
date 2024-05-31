@@ -1,45 +1,49 @@
-<div class="container-fluid text-bg-dark p-5">
+<div class="container-fluid text-bg-dark lg p-5">
   <div class="card text-bg-light mb-3" style="width: auto;">
     <div class="card-body">
-      <div class="row mb-3">
-        <h5 class="card-title col-1">Autores</h5>
-        <a routerLink="/authors" class="btn btn-primary col-1">Editar</a>
+      <div class="row lg mb-3">
+        <h5 class="card-title col">Autores</h5>
+        <a routerLink="/authors" class="btn btn-primary me-3 col-6" style="width: 4.5rem;">Editar</a>
       </div>
       <p class="card-text">Temos um total de {{authors.length}} autores registrados</p>
     </div>
   </div>
   <div class="card text-bg-light" style="width: auto;">
     <div class="card-body">
-      <div class="row mb-3">
-        <h5 class="card-title col-1">Livros</h5>
-        <a routerLink="/books" class="btn btn-primary col-1">Editar</a>
+      <div class="row lg mb-3">
+        <h5 class="card-title col">Livros</h5>
+        <a routerLink="/books" class="btn btn-primary me-3 col-6" style="width: 4.5rem;">Editar</a>
       </div>
-      <div class="row">
-        <p class="card-text col align-self-start">Os livros que temos registrados</p>
-        <div class="col-3 align-self-end">
+      <div class="row lg mb-3">
+        <p class="card-text col">Os livros que temos registrados:</p>
+        <div class="col-6">
           <div class="form-floating">
-            <select class="form-select" id="authorFilter" aria-label="Filtrar">
+            <select class="form-select" id="authorFilter"
+                    aria-label="Filtrar"
+                    (change)="filterByAuthor()">
               <option selected>Nenhum autor selecionado</option>
-              <option *ngFor="let author of authors" [ngValue]="author.id">{{author.name}}</option>
+              <option *ngFor="let author of authors" value="{{author.id}}">{{author.name}}</option>
             </select>
             <label for="authorFilter">Filtrar</label>
           </div>
         </div>
       </div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Titulo</th>
-            <th scope="col">Autor</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let book of books">
-            <td>{{book.title}}</td>
-            <td>{{getAuthorName(book)?.name}}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Titulo</th>
+              <th scope="col">Autor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let book of books">
+              <td>{{book.title}}</td>
+              <td>{{getAuthorName(book)?.name}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

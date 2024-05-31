@@ -1,4 +1,4 @@
-<div class="countainer bg-dark lg p-5">
+<div class="countainer mb-auto bg-dark lg p-5">
   <h1 class="text-bg-dark">Cadastro de Autor</h1>
   <form [formGroup]="authorFormGroup" class="mb-3">
     <div class="form-floating mb-3">
@@ -69,7 +69,7 @@
           <td>{{author.name}}</td>
           <td>{{showDate(author)}}</td>
           <td>{{author.nationality}}</td>
-          <td>{{author.summary}}</td>
+          <td>{{author.summary.slice(0, 50) + "..."}}</td>
           <td class="text-center">
             <div class="btn-group" role="group">
               <button type="button"
