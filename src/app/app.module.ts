@@ -10,6 +10,7 @@ import { AuthorComponent } from './features/author/author.component';
 import { BookComponent } from './features/book/book.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { FooterComponent } from './core/footer/footer.component';
+import { HomeComponent } from './features/home/home.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FooterComponent } from './core/footer/footer.component';
     AuthorComponent,
     BookComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

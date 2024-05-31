@@ -1,6 +1,6 @@
 import { Mounth } from './../../mounth';
 import { BookService } from './../../services/book.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Book } from './book';
 import { Author } from '../author/author';
@@ -11,7 +11,7 @@ import { AuthorService } from '../../services/author.service';
   templateUrl: './book.component.html',
   styleUrl: './book.component.css'
 })
-export class BookComponent {
+export class BookComponent implements OnInit{
   books: Book[] = [];
   mounths = Object.values(Mounth);
   authors: Author[] = [];
